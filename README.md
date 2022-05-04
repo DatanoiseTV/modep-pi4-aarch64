@@ -4,6 +4,8 @@
 
 Use it at you own risk. It will overclock your Pi 4/400 to 4x 2.0 GHz. Be sure to use a heatsink on the Pi 4. The Pi 400 should be fine without (mine is around 38°C while modep is running).
 
+It requires the 64-bit version of Raspberry OS.
+
 ### Install modep
 
 Follow official instructions.
@@ -29,4 +31,14 @@ afterwards start the services using systemctl start <service_name>
 
 ```
 sudo cp config.txt /boot/
+```
+
+### Fetch my 64-bit Kernel with Realtime (preempt-rt) patches
+
+```
+wget https://bittunnel.org/rpi/rt-kernel/linux-headers-5.15.36-rt41-v8+_5.15.36-rt41-v8+-3_arm64.deb
+wget https://bittunnel.org/rpi/rt-kernel/linux-image-5.15.36-rt41-v8+_5.15.36-rt41-v8+-3_arm64.deb
+wget https://bittunnel.org/rpi/rt-kernel/linux-libc-dev_5.15.36-rt41-v8+-3_arm64.deb
+
+dpkg -i <deb_name>
 ```
