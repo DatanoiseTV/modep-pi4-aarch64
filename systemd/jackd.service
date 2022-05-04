@@ -1,0 +1,19 @@
+[Unit]
+Description=Jack audio server 
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User=pi
+Group=pi
+Type=simple
+PrivateTmp=true
+LimitRTPRIO=99
+LimitMEMLOCK=infinity
+Restart=always
+RestartSec=2
+Environment="JACK_NO_AUDIO_RESERVATION=1"
+Environment="JACK_PROMISCUOUS_SERVER=jack"
+#ExecStart=/usr/bin/jackd -dalsa -dhw:Duet -r48000 -p128 -X seq 
+ExecStart=/usr/bin/jackd -t 2000 -R -P 95 -dalsa -dhw:M12 -r44100 -p256 -n3 -S -X seq
